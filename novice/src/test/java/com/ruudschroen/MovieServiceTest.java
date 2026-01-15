@@ -12,6 +12,9 @@ import java.net.http.HttpResponse;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import tools.jackson.databind.ObjectMapper;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MovieServiceTest {
@@ -24,7 +27,7 @@ public class MovieServiceTest {
     @Test
     void retrievesMovie() throws IOException, InterruptedException {
         MockitoAnnotations.openMocks(this);
-        MovieService movieService = new MovieService(httpClient);
+        MovieService movieService = new MovieService(httpClient, new ObjectMapper());
 
         when(httpResponse.statusCode()).thenReturn(200);
         when(httpResponse.body()).thenReturn(
