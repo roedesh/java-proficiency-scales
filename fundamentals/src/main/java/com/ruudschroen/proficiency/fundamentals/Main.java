@@ -11,10 +11,9 @@ import com.ruudschroen.proficiency.fundamentals.movies.omdb.OmdbMovieFetcher;
 public class Main {
     static final String OMDB_API_KEY = "f9d9aca";
     static final String IMDB_ID = "tt1745960"; // Top Gun: Maverick
+    static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-        final Logger logger = LoggerFactory.getLogger(Main.class);
-
         OmdbMovieFetcher movieFetcher = new OmdbMovieFetcher(OMDB_API_KEY);
         try {
             Movie movie = movieFetcher.getMovieByImdbID(IMDB_ID);
