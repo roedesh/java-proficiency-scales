@@ -40,7 +40,7 @@ public class Movie {
             @JsonProperty("Awards") String awards,
             @JsonProperty("Poster") String poster, @JsonProperty("Ratings") MovieRating[] ratings,
             @JsonProperty("Metascore") String metascore, @JsonProperty("imdbRating") String imdbRating,
-            @JsonProperty("imdbVotes") String imdbVotes, @JsonProperty("imdbId") String imdbId,
+            @JsonProperty("imdbVotes") String imdbVotes, @JsonProperty("imdbID") String imdbId,
             @JsonProperty("Type") String type, @JsonProperty("DVD") String dvd,
             @JsonProperty("BoxOffice") String boxOffice, @JsonProperty("Production") String production,
             @JsonProperty("Website") String website,
@@ -162,7 +162,7 @@ public class Movie {
         return imdbVotes;
     }
 
-    @JsonProperty("imdbId")
+    @JsonProperty("imdbID")
     public String getImdbId() {
         return imdbId;
     }
