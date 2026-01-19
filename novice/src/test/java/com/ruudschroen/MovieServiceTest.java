@@ -13,6 +13,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import com.ruudschroen.proficiency.novice.movies.Movie;
+import com.ruudschroen.proficiency.novice.movies.MovieServiceException;
+import com.ruudschroen.proficiency.novice.movies.omdb.OmdbMovieService;
+
 import tools.jackson.databind.ObjectMapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +31,7 @@ public class MovieServiceTest {
     @Test
     void retrievesMovie() throws IOException, InterruptedException {
         MockitoAnnotations.openMocks(this);
-        MovieService movieService = new MovieService(httpClient, new ObjectMapper());
+        OmdbMovieService movieService = new OmdbMovieService(httpClient, new ObjectMapper());
 
         when(httpResponse.statusCode()).thenReturn(200);
         when(httpResponse.body()).thenReturn(
@@ -40,9 +44,9 @@ public class MovieServiceTest {
                 .thenReturn(httpResponse);
 
         try {
-            Movie movie = movieService.getByImdbId("tt1745960");
+            Movie movie = movieService.getMovieByImdbID("tt1745960");
             assertThat(movie.getTitle()).isEqualTo("Top Gun: Maverick");
-        } catch (IOException | InterruptedException e) {
+        } catch (MovieServiceException e) {
             e.printStackTrace();
         }
     }

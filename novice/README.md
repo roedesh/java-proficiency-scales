@@ -11,5 +11,5 @@ mvn package
 And then run the JAR via:
 
 ```
-java -jar target/mavendemo-1.0-SNAPSHOT.jar
+java -jar target/novice-1.0-SNAPSHOT.jar
 ```

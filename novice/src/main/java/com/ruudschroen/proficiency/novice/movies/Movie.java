@@ -1,4 +1,4 @@
-package com.ruudschroen;
+package com.ruudschroen.proficiency.novice.movies;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,20 +31,20 @@ public class Movie {
     private final String response;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public Movie(@JsonProperty("Title") String title, @JsonProperty("Year") String year,
-            @JsonProperty("Rated") String rated, @JsonProperty("Released") String released,
-            @JsonProperty("Runtime") String runtime, @JsonProperty("Genre") String genre,
-            @JsonProperty("Director") String director, @JsonProperty("Writer") String writer,
-            @JsonProperty("Actors") String actors, @JsonProperty("Plot") String plot,
-            @JsonProperty("Language") String language, @JsonProperty("Country") String country,
-            @JsonProperty("Awards") String awards,
-            @JsonProperty("Poster") String poster, @JsonProperty("Ratings") MovieRating[] ratings,
-            @JsonProperty("Metascore") String metascore, @JsonProperty("imdbRating") String imdbRating,
-            @JsonProperty("imdbVotes") String imdbVotes, @JsonProperty("imdbID") String imdbId,
-            @JsonProperty("Type") String type, @JsonProperty("DVD") String dvd,
-            @JsonProperty("BoxOffice") String boxOffice, @JsonProperty("Production") String production,
-            @JsonProperty("Website") String website,
-            @JsonProperty("Response") String response) {
+    public Movie(String title, String year,
+            String rated, String released,
+            String runtime, String genre,
+            String director, String writer,
+            String actors, String plot,
+            String language, String country,
+            String awards,
+            String poster, MovieRating[] ratings,
+            String metascore, String imdbRating,
+            String imdbVotes, String imdbId,
+            String type, String dvd,
+            String boxOffice, String production,
+            String website,
+            String response) {
         this.title = title;
         this.year = year;
         this.rated = rated;
@@ -72,82 +72,82 @@ public class Movie {
         this.response = response;
     }
 
-    @JsonProperty("Title")
+    @JsonProperty("title")
     public String getTitle() {
         return title;
     }
 
-    @JsonProperty("Year")
+    @JsonProperty("year")
     public String getYear() {
         return year;
     }
 
-    @JsonProperty("Rated")
+    @JsonProperty("rated")
     public String getRated() {
         return rated;
     }
 
-    @JsonProperty("Released")
+    @JsonProperty("released")
     public String getReleased() {
         return released;
     }
 
-    @JsonProperty("Runtime")
+    @JsonProperty("runtime")
     public String getRuntime() {
         return runtime;
     }
 
-    @JsonProperty("Genre")
+    @JsonProperty("genre")
     public String getGenre() {
         return genre;
     }
 
-    @JsonProperty("Director")
+    @JsonProperty("director")
     public String getDirector() {
         return director;
     }
 
-    @JsonProperty("Writer")
+    @JsonProperty("writer")
     public String getWriter() {
         return writer;
     }
 
-    @JsonProperty("Actors")
+    @JsonProperty("actors")
     public String getActors() {
         return actors;
     }
 
-    @JsonProperty("Plot")
+    @JsonProperty("plot")
     public String getPlot() {
         return plot;
     }
 
-    @JsonProperty("Language")
+    @JsonProperty("language")
     public String getLanguage() {
         return language;
     }
 
-    @JsonProperty("Country")
+    @JsonProperty("country")
     public String getCountry() {
         return country;
     }
 
-    @JsonProperty("Awards")
+    @JsonProperty("awards")
     public String getAwards() {
         return awards;
     }
 
-    @JsonProperty("Poster")
+    @JsonProperty("poster")
     public String getPoster() {
         return poster;
     }
 
-    @JsonProperty("Ratings")
+    @JsonProperty("ratings")
     public MovieRating[] getRatings() {
         return ratings;
     }
 
-    @JsonProperty("Metascore")
+    @JsonProperty("metascore")
     public String getMetascore() {
         return metascore;
     }
@@ -167,34 +167,33 @@ public class Movie {
         return imdbId;
     }
 
-    @JsonProperty("Type")
+    @JsonProperty("type")
     public String getType() {
         return type;
     }
 
-    @JsonProperty("DVD")
+    @JsonProperty("dvd")
     public String getDvd() {
         return dvd;
     }
 
-    @JsonProperty("BoxOffice")
+    @JsonProperty("boxOffice")
     public String getBoxOffice() {
         return boxOffice;
     }
 
-    @JsonProperty("Production")
+    @JsonProperty("production")
     public String getProduction() {
         return production;
     }
 
-    @JsonProperty("Website")
+    @JsonProperty("website")
     public String getWebsite() {
         return website;
     }
 
-    @JsonProperty("Response")
+    @JsonProperty("response")
     public String getResponse() {
         return response;
     }
-
 }
