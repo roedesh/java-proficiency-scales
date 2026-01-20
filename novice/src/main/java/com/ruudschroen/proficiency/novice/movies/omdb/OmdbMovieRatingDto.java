@@ -7,11 +7,9 @@ import com.ruudschroen.proficiency.novice.movies.MovieRatingDto;
 
 import lombok.Getter;
 import lombok.experimental.Accessors;
-import lombok.extern.jackson.Jacksonized;
 
 @Getter
 @Accessors(fluent = true)
-@Jacksonized
 public class OmdbMovieRatingDto implements MovieRatingDto {
     private final String name;
     private final String score;

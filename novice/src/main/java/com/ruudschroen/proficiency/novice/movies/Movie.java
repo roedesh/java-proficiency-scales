@@ -9,10 +9,10 @@ public class Movie {
     private final String rated;
     private final String released;
     private final String runtime;
-    private final String genre;
+    private final String[] genres;
     private final String director;
-    private final String writer;
-    private final String actors;
+    private final String[] writers;
+    private final String[] actors;
     private final String plot;
     private final String language;
     private final String country;
@@ -33,9 +33,9 @@ public class Movie {
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
     public Movie(String title, String year,
             String rated, String released,
-            String runtime, String genre,
-            String director, String writer,
-            String actors, String plot,
+            String runtime, String[] genres,
+            String director, String[] writers,
+            String[] actors, String plot,
             String language, String country,
             String awards,
             String poster, MovieRating[] ratings,
@@ -50,9 +50,9 @@ public class Movie {
         this.rated = rated;
         this.released = released;
         this.runtime = runtime;
-        this.genre = genre;
+        this.genres = genres;
         this.director = director;
-        this.writer = writer;
+        this.writers = writers;
         this.actors = actors;
         this.plot = plot;
         this.language = language;
@@ -97,9 +97,9 @@ public class Movie {
         return runtime;
     }
 
-    @JsonProperty("genre")
-    public String getGenre() {
-        return genre;
+    @JsonProperty("genres")
+    public String[] getGenres() {
+        return genres;
     }
 
     @JsonProperty("director")
@@ -107,13 +107,13 @@ public class Movie {
         return director;
     }
 
-    @JsonProperty("writer")
-    public String getWriter() {
-        return writer;
+    @JsonProperty("writers")
+    public String[] getWriters() {
+        return writers;
     }
 
     @JsonProperty("actors")
-    public String getActors() {
+    public String[] getActors() {
         return actors;
     }
 
