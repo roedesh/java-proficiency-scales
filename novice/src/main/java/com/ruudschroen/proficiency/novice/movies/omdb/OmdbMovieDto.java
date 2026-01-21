@@ -9,7 +9,6 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 
 import java.util.Arrays;
-import java.util.List;
 
 @Getter
 @Accessors(fluent = true)
@@ -119,13 +118,13 @@ public class OmdbMovieDto implements MovieDto {
     }
 
     public Movie toMovie() {
-        MovieRating[] ratings = Arrays.stream(this.ratings)
+        final MovieRating[] ratings = Arrays.stream(this.ratings)
                 .map(OmdbMovieRatingDto::toMovieRating)
                 .toArray(MovieRating[]::new);
 
-        String[] actorsList = actors.split("\\s*,\\s*");
-        String[] genres = genre.split("\\s*,\\s*");
-        String[] writers = writer.split("\\s*,\\s*");
+        final String[] actorsList = actors.split("\\s*,\\s*");
+        final String[] genres = genre.split("\\s*,\\s*");
+        final String[] writers = writer.split("\\s*,\\s*");
 
         return new Movie(
                 title,

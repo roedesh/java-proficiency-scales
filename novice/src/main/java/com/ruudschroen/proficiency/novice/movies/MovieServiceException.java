@@ -2,7 +2,7 @@
 package com.ruudschroen.proficiency.novice.movies;
 
 public class MovieServiceException extends Exception {
-    public MovieServiceException(String m) {
-        super(m);
+    public MovieServiceException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

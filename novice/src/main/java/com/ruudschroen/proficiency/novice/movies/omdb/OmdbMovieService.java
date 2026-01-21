@@ -16,11 +16,12 @@ import com.ruudschroen.proficiency.novice.movies.Movie;
 import com.ruudschroen.proficiency.novice.movies.MovieService;
 import com.ruudschroen.proficiency.novice.movies.MovieServiceException;
 
+import tools.jackson.core.JacksonException;
 import tools.jackson.databind.ObjectMapper;
 
 @Service
 public class OmdbMovieService implements MovieService {
-    private static Logger logger = LoggerFactory.getLogger(OmdbMovieService.class);
+    private static final Logger logger = LoggerFactory.getLogger(OmdbMovieService.class);
     static final String OMDB_API_KEY = "f9d9aca";
 
     private final HttpClient httpClient;
@@ -33,9 +34,9 @@ public class OmdbMovieService implements MovieService {
 
     @Override
     public Movie getMovieByImdbID(String imdbId) throws MovieServiceException {
-        URI uri = URI.create(String.format("https://www.omdbapi.com/?apikey=%s&i=%s", OMDB_API_KEY, imdbId));
+        final URI uri = URI.create(String.format("https://www.omdbapi.com/?apikey=%s&i=%s", OMDB_API_KEY, imdbId));
 
-        HttpRequest request = HttpRequest.newBuilder()
+        final HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .build();
         HttpResponse<String> response;
@@ -45,10 +46,14 @@ public class OmdbMovieService implements MovieService {
             response = httpClient.send(request, BodyHandlers.ofString());
             logger.info("Successfully received response!");
         } catch (IOException | InterruptedException e) {
-            throw new MovieServiceException(e.getMessage());
+            throw new MovieServiceException("Failed to retrieve movie", e);
         }
 
-        OmdbMovieDto omdbMovieDto = objectMapper.readValue(response.body(), OmdbMovieDto.class);
-        return omdbMovieDto.toMovie();
+        try {
+            final OmdbMovieDto omdbMovieDto = objectMapper.readValue(response.body(), OmdbMovieDto.class);
+            return omdbMovieDto.toMovie();
+        } catch (JacksonException e) {
+            throw new MovieServiceException("Failed to map response to OmdbMovieDto class", e);
+        }
     }
 }
