@@ -28,7 +28,6 @@ public class MovieController {
         try {
             return movieService.getMovieByImdbID(IMDB_ID);
         } catch (MovieServiceException e) {
-            e.printStackTrace();
             logger.error("An exception occured in GET /movie!", e);
             throw new ResponseStatusException(
                     HttpStatus.INTERNAL_SERVER_ERROR, "Failed to retrieve movie", e);
